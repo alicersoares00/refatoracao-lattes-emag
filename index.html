@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma Lattes - CNPq - Padrão gov.br</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Skip link de acessibilidade (Âncora principal) -->
+    <a href="#conteudo-principal" class="skip-link">Ir para o conteúdo principal</a>
+
+    <!-- Barra de Acessibilidade Padrão gov.br -->
+    <div class="barra-acessibilidade">
+        <div class="container barra-container">
+            <div class="atalhos-acessibilidade">
+                <span>Atalhos:</span>
+                <a href="#conteudo-principal">Conteúdo (Alt+1)</a>
+                <a href="#menu-principal">Menu (Alt+2)</a>
+                <a href="#buscar-curriculo">Busca (Alt+3)</a>
+            </div>
+            <div class="ferramentas-acessibilidade">
+                <!-- Ícones representados por caracteres/emojis mantendo o texto legível -->
+                <button type="button" id="btn-contraste" aria-label="Alternar alto contraste">
+                    <span aria-hidden="true">🌗</span> Alto Contraste
+                </button>
+                <div class="ajuste-fonte">
+                    <button type="button" id="btn-fonte-diminuir" aria-label="Diminuir tamanho da fonte">A-</button>
+                    <button type="button" id="btn-fonte-normal" aria-label="Tamanho original da fonte">A</button>
+                    <button type="button" id="btn-fonte-aumentar" aria-label="Aumentar tamanho da fonte">A+</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Semântico -->
+    <header class="cabecalho-principal">
+        <div class="container">
+            <div class="cabecalho-top">
+                <div class="logo">
+                    <img src="image copy.png"
+                        alt="Logo da Plataforma Lattes - Conselho Nacional de Desenvolvimento Científico e Tecnológico">
+                </div>
+                <!-- Botão Menu Responsivo (Hambúrguer Acessível) -->
+                <button type="button" id="btn-menu-mobile" class="btn-menu-mobile" aria-expanded="false"
+                    aria-controls="menu-principal" aria-label="Abrir menu de navegação">
+                    <span class="icone-menu" aria-hidden="true">&#9776;</span> Menu
+                </button>
+            </div>
+
+            <!-- Nav com role explicitado -->
+            <nav id="menu-principal" class="menu-principal" role="navigation"
+                aria-label="Navegação principal da Plataforma Lattes">
+                <ul class="lista-menu">
+                    <li><a href="#sobre">O que é</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#buscar-curriculo">Buscar Currículo</a></li>
+                    <li><a href="#suporte">Suporte e Ajuda</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main com role explícito -->
+    <main id="conteudo-principal" tabindex="-1" role="main">
+        <!-- Hero Section -->
+        <section id="sobre" class="hero-section" aria-labelledby="titulo-hero" tabindex="-1">
+            <div class="container">
+                <h1 id="titulo-hero">Acesso à Plataforma Lattes</h1>
+                <p>A mais importante base de dados de pesquisadores, grupos de pesquisa e instituições do Brasil.
+                    Centralize suas informações científicas com segurança e integração total.</p>
+            </div>
+        </section>
+
+        <div class="container">
+            <!-- Serviços com aria-labelledby e tabindex para receber foco via âncora -->
+            <section id="servicos" class="secao-margem" aria-labelledby="titulo-servicos" tabindex="-1">
+                <h2 id="titulo-servicos">Serviços ao Pesquisador</h2>
+                <div class="servicos-grid">
+                    <article class="card-servico destaque">
+                        <h3>Buscar Currículo Lattes</h3>
+                        <p>Consulte a base de dados de forma simples em busca de pesquisadores e especialistas.</p>
+                        <a href="#buscar-curriculo" class="btn btn-icone"
+                            aria-label="Ir para formulário de busca de currículos">
+                            <span aria-hidden="true">🔍</span> Pesquisar
+                        </a>
+                    </article>
+                    <article class="card-servico">
+                        <h3>Atualizar Currículo</h3>
+                        <p>Acesse seu perfil utilizando sua conta gov.br para inserir novas produções e vínculos.</p>
+                        <button type="button" class="btn btn-secondary btn-icone"
+                            aria-label="Acessar painel de atualização do currículo lattes">
+                            <span aria-hidden="true">📝</span> Atualizar
+                        </button>
+                    </article>
+                    <article class="card-servico">
+                        <h3>Diretório de Grupos</h3>
+                        <p>Explore informações dos grupos de pesquisa que atuam em todas as áreas do conhecimento no
+                            país.</p>
+                        <button type="button" class="btn btn-secondary btn-icone"
+                            aria-label="Acessar o diretório de grupos de pesquisa do CNPq">
+                            <span aria-hidden="true">👥</span> Acessar Grupos
+                        </button>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Seção de Busca com âncora navegável -->
+            <section id="buscar-curriculo" class="secao-busca form-box" aria-labelledby="titulo-busca" tabindex="-1">
+                <h2 id="titulo-busca">Busca Direta de Currículos</h2>
+
+                <form action="#" method="GET" class="formulario-acessivel" role="search">
+                    <fieldset>
+                        <legend>Consultar por Termo</legend>
+
+                        <div class="form-group-inline">
+                            <div class="form-group flex-grow">
+                                <label for="termo-busca">Digite o nome do especialista, assunto ou palavra-chave</label>
+                                <input type="search" id="termo-busca" name="q" placeholder="Ex: Engenharia ou Nome"
+                                    required aria-required="true">
+                            </div>
+
+                            <div class="form-actions-inline">
+                                <button type="submit" class="btn btn-primary btn-icone">
+                                    <span aria-hidden="true">🔎</span> Buscar Currículos
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="filtros-busca" role="group" aria-labelledby="label-filtros">
+                            <p id="label-filtros" class="filtro-titulo">Filtros Opcionais de Titulação:</p>
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="filtro_doutores" value="doutores" checked
+                                        aria-checked="true">
+                                    <span class="custom-checkbox"></span>
+                                    Doutores e Titulares
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="filtro_demais" value="demais_pesquisadores" checked
+                                        aria-checked="true">
+                                    <span class="custom-checkbox"></span>
+                                    Demais pesquisadores (Mestres, Graduados, etc)
+                                </label>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </section>
+
+            <!-- Seção de Contato -->
+            <section id="suporte" class="secao-contato form-box" aria-labelledby="titulo-suporte" tabindex="-1">
+                <h2 id="titulo-suporte">Suporte Técnico Lattes</h2>
+                <p>Preencha os dados de contato rigorosamente para que possamos auxiliar em sua demanda técnica.</p>
+
+                <form action="#" method="POST" class="formulario-acessivel">
+                    <fieldset>
+                        <legend>Seus Dados</legend>
+                        <div class="form-row">
+                            <div class="form-group half">
+                                <label for="nome">Nome Completo</label>
+                                <input type="text" id="nome" name="nome" required aria-required="true"
+                                    autocomplete="name">
+                            </div>
+                            <div class="form-group half">
+                                <label for="email">E-mail Cadastrado</label>
+                                <input type="email" id="email" name="email" required aria-required="true"
+                                    autocomplete="email">
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Sua Dúvida</legend>
+                        <div class="form-group">
+                            <label for="assunto">Categoria do Chamado</label>
+                            <select id="assunto" name="assunto" required aria-required="true">
+                                <option value="">Escolha a categoria que melhor define o problema</option>
+                                <option value="senha">Problemas de Senha</option>
+                                <option value="atualizacao">Falhas de Atualização</option>
+                                <option value="outro">Outro Motivo</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="mensagem">Detalhes do Chamado</label>
+                            <textarea id="mensagem" name="mensagem" rows="5" required aria-required="true"></textarea>
+                        </div>
+                    </fieldset>
+
+                    <div class="form-actions right-align">
+                        <button type="submit" class="btn btn-primary btn-large btn-icone">
+                            <span aria-hidden="true">&#9993;</span> Enviar Solicitação
+                        </button>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <footer class="rodape-institucional">
+        <div class="container">
+            <div class="info-rodape">
+                <img src="https://via.placeholder.com/200x60.png?text=CNPq+Branco" alt="Logo do CNPq">
+                <p>Conselho Nacional de Desenvolvimento Científico e Tecnológico - CNPq.</p>
+            </div>
+            <div class="links-rodape">
+                <h2 id="titulo-rodape-servicos">Links Úteis</h2>
+                <nav aria-labelledby="titulo-rodape-servicos">
+                    <ul>
+                        <li><a href="#acessibilidade">Acessibilidade eMAG</a></li>
+                        <li><a href="#privacidade">Privacidade e Termos</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <!-- VLibras Widget (Implementação Padrão do Governo) -->
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget({
+            rootPah: 'https://vlibras.gov.br/app'
+        });
+    </script>
+
+    <!-- Script de Funcionalidades e Acessibilidade -->
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,607 @@
+/* Variáveis de Cores - Padrão gov.br e Identidade CNPq/Lattes */
+:root {
+    /* Cores Principais */
+    --cor-azul-escuro: #003b73;
+    --cor-azul-principal: #0056b3;
+    --cor-azul-claro: #dbeafe;
+    --cor-branco: #ffffff;
+    
+    /* Neutras */
+    --cor-fundo-geral: #f4f6f9;
+    --cor-fundo-cartao: #ffffff;
+    --cor-texto-padrao: #212529;
+    --cor-borda: #cbd5e1;
+    
+    /* Feedback e Acessibilidade (WCAG AA/AAA) */
+    --cor-foco-acessivel: #ff5722; /* Laranja Vibrante conforme diretriz */
+    --cor-foco-borda: #000000;
+    
+    /* Tipografia Limpa */
+    --fonte-principal: 'Inter', 'Rawline', Verdana, Arial, sans-serif;
+    
+    /* Variável base de tamanho de fonte para controle via JS */
+    --tamanho-fonte-base: 16px;
+    
+    /* Espaçamentos responsivos base */
+    --espaco-sm: 0.5rem;
+    --espaco-md: 1.2rem;
+    --espaco-lg: 2.2rem;
+    --espaco-xl: 3.5rem;
+}
+
+/* TEMA ALTO CONTRASTE (Ativado via JS adicionando classe ao body) */
+body.alto-contraste {
+    --cor-azul-escuro: #000000;
+    --cor-azul-principal: #000000;
+    --cor-azul-claro: #111111;
+    --cor-branco: #000000;
+    --cor-fundo-geral: #000000;
+    --cor-fundo-cartao: #000000;
+    --cor-texto-padrao: #ffff00; /* Texto amarelo no fundo preto */
+    --cor-borda: #ffffff;
+    
+    --cor-foco-acessivel: #00ffff; /* Ciano para foco no tema noturno */
+    --cor-foco-borda: #ffffff;
+}
+
+body.alto-contraste img {
+    filter: grayscale(100%) contrast(120%);
+}
+
+body.alto-contraste .cabecalho-principal,
+body.alto-contraste .card-servico,
+body.alto-contraste .form-box,
+body.alto-contraste fieldset,
+body.alto-contraste .barra-acessibilidade {
+    border: 1px solid #ffffff;
+    background-color: #000000 !important;
+}
+
+body.alto-contraste h1, 
+body.alto-contraste h2, 
+body.alto-contraste h3, 
+body.alto-contraste p,
+body.alto-contraste label,
+body.alto-contraste span,
+body.alto-contraste a,
+body.alto-contraste button,
+body.alto-contraste legend {
+    color: #ffff00 !important;
+}
+
+body.alto-contraste .btn-primary {
+    background-color: #000000;
+    color: #ffff00;
+    border: 2px solid #ffff00;
+}
+body.alto-contraste .btn-primary:hover {
+    background-color: #ffff00;
+    color: #000000;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Scroll suave (Diretriz de Navegação Lógica) */
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
+html {
+    font-size: var(--tamanho-fonte-base);
+}
+
+body {
+    font-family: var(--fonte-principal);
+    background-color: var(--cor-fundo-geral);
+    color: var(--cor-texto-padrao);
+    line-height: 1.6;
+}
+
+/* ----------------------------------------------------
+   Acessibilidade eMAG - Foco Visual por Teclado
+------------------------------------------------------- */
+a:focus, button:focus, input:focus, select:focus, textarea:focus, .checkbox-label input[type="checkbox"]:focus + .custom-checkbox, [tabindex="-1"]:focus {
+    outline: 4px solid var(--cor-foco-acessivel);
+    outline-offset: 3px;
+    border-radius: 2px;
+    transition: outline 0.1s ease;
+}
+
+/* O outline num target via âncora pode ser irritante pra quem usa mouse. Escondendo via focus-visible se possível, mas mantendo pra garantir. */
+[tabindex="-1"]:focus:not(:focus-visible) {
+    outline: none;
+}
+
+.skip-link {
+    position: absolute;
+    top: -60px;
+    left: 20px;
+    background-color: var(--cor-azul-escuro);
+    color: var(--cor-branco);
+    padding: 12px 20px;
+    z-index: 100000;
+    text-decoration: none;
+    font-weight: 700;
+    border-radius: 0 0 6px 6px;
+    transition: top 0.2s ease-in-out;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 var(--espaco-md);
+}
+
+/* ----------------------------------------------------
+   Barra de Acessibilidade Gov.br Superior
+------------------------------------------------------- */
+.barra-acessibilidade {
+    background-color: #f1f4f6;
+    border-bottom: 1px solid var(--cor-borda);
+    padding: 6px 0;
+    font-size: 0.85rem;
+}
+
+.barra-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.atalhos-acessibilidade a {
+    color: var(--cor-azul-principal);
+    text-decoration: none;
+    margin-right: 15px;
+    font-weight: 600;
+}
+
+.atalhos-acessibilidade a:hover {
+    text-decoration: underline;
+}
+
+.ferramentas-acessibilidade {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.ferramentas-acessibilidade button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--cor-texto-padrao);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.ferramentas-acessibilidade button:hover {
+    color: var(--cor-azul-principal);
+    text-decoration: underline;
+}
+
+.ajuste-fonte {
+    display: flex;
+    gap: 8px;
+}
+
+/* Ocultar Barra em Mobile para simplificar espaço, embora eMAG não proíba */
+@media (max-width: 600px) {
+    .atalhos-acessibilidade { display: none; }
+    .barra-container { justify-content: center; }
+}
+
+/* ----------------------------------------------------
+   Cabeçalho Lattes / gov.br
+------------------------------------------------------- */
+.cabecalho-principal {
+    background-color: var(--cor-branco);
+    border-bottom: 6px solid var(--cor-azul-principal);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.cabecalho-top {
+    padding: var(--espaco-md) 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    height: 50px;
+    width: auto;
+}
+
+.btn-menu-mobile {
+    display: none;
+    background-color: var(--cor-azul-escuro);
+    color: var(--cor-branco);
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    align-items: center;
+    gap: 8px;
+}
+
+.menu-principal {
+    border-top: 1px solid var(--cor-borda);
+}
+
+.lista-menu {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+}
+
+.lista-menu a {
+    text-decoration: none;
+    color: var(--cor-texto-padrao);
+    font-weight: 600;
+    display: block;
+    padding: 1rem 1.5rem;
+    border-bottom: 4px solid transparent;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.lista-menu a:hover,
+.lista-menu a:focus {
+    background-color: var(--cor-azul-claro);
+    color: var(--cor-azul-escuro);
+    border-bottom-color: var(--cor-azul-principal);
+}
+
+/* ----------------------------------------------------
+   Hero / Intro Lattes Web
+------------------------------------------------------- */
+.hero-section {
+    background: linear-gradient(135deg, var(--cor-azul-escuro) 0%, var(--cor-azul-principal) 100%);
+    color: var(--cor-branco);
+    padding: var(--espaco-xl) 0;
+    text-align: left;
+}
+
+.hero-section h1 {
+    font-size: 2.8rem;
+    color: var(--cor-branco);
+    margin-bottom: var(--espaco-sm);
+}
+
+.hero-section p {
+    font-size: 1.3rem;
+    max-width: 800px;
+}
+
+main { padding-bottom: var(--espaco-xl); }
+
+h2 {
+    color: var(--cor-azul-principal);
+    font-size: 2.1rem;
+    margin: var(--espaco-xl) 0 var(--espaco-md) 0;
+    border-bottom: 2px solid var(--cor-borda);
+    padding-bottom: var(--espaco-sm);
+}
+
+h3 {
+    color: var(--cor-azul-escuro);
+    font-size: 1.4rem;
+    margin-bottom: var(--espaco-sm);
+}
+
+.secao-margem {
+    margin-top: var(--espaco-lg);
+}
+
+/* ----------------------------------------------------
+   Cards de Funcionalidades Lattes
+------------------------------------------------------- */
+.servicos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--espaco-lg);
+    margin-top: var(--espaco-lg);
+}
+
+.card-servico {
+    background-color: var(--cor-fundo-cartao);
+    padding: var(--espaco-lg);
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+    border: 1px solid var(--cor-borda);
+    border-top: 5px solid var(--cor-borda);
+    display: flex;
+    flex-direction: column;
+}
+
+.card-servico.destaque {
+    border-top-color: var(--cor-azul-principal);
+    background-color: #fcfdfe;
+}
+
+.card-servico p {
+    flex-grow: 1;
+    margin-bottom: var(--espaco-lg);
+    color: #495057;
+}
+
+/* Botões com ícones e texto */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 0.9rem 1.6rem;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 1.05rem;
+    text-decoration: none;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.btn-icone span {
+    font-size: 1.2rem;
+}
+
+.btn-primary, .card-servico.destaque .btn {
+    background-color: var(--cor-azul-principal);
+    color: var(--cor-branco);
+}
+
+.btn-primary:hover, .card-servico.destaque .btn:hover {
+    background-color: var(--cor-azul-escuro);
+}
+
+.btn-secondary, .card-servico:not(.destaque) .btn {
+    background-color: transparent;
+    color: var(--cor-azul-principal);
+    border-color: var(--cor-azul-principal);
+}
+
+.btn-secondary:hover, .card-servico:not(.destaque) .btn:hover {
+    background-color: var(--cor-azul-principal);
+    color: var(--cor-branco);
+}
+
+.btn-large {
+    padding: 1rem 2.5rem;
+    font-size: 1.15rem;
+}
+
+/* ----------------------------------------------------
+   Formulários Lattes Gov.br Acessíveis
+------------------------------------------------------- */
+.form-box {
+    background-color: var(--cor-fundo-cartao);
+    padding: var(--espaco-xl);
+    border-radius: 8px;
+    border: 1px solid var(--cor-borda);
+    margin-bottom: var(--espaco-xl);
+}
+
+fieldset {
+    border: 1px solid var(--cor-borda);
+    padding: var(--espaco-lg);
+    margin-bottom: var(--espaco-lg);
+    border-radius: 8px;
+    background-color: var(--cor-fundo-geral);
+}
+
+legend {
+    padding: 0 var(--espaco-sm);
+    font-weight: 700;
+    color: var(--cor-azul-escuro);
+    font-size: 1.3rem;
+    background-color: var(--cor-fundo-cartao);
+    border: 1px solid var(--cor-borda);
+    border-radius: 4px;
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--espaco-lg);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: var(--espaco-md);
+}
+
+.form-group-inline {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: var(--espaco-md);
+}
+
+.half { flex: 1; min-width: 250px; }
+.flex-grow { flex: 1 1 auto; min-width: 300px; }
+
+label {
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--cor-texto-padrao);
+}
+
+input[type="text"], input[type="email"], input[type="search"], select, textarea {
+    padding: 0.95rem;
+    border: 1px solid #8e9cad;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: inherit;
+    background-color: var(--cor-branco);
+    color: var(--cor-texto-padrao);
+    min-height: 48px;
+}
+
+.right-align { text-align: right; }
+
+/* ----------------------------------------------------
+   Filtros Avançados - Checkboxes Customizados WCAG
+------------------------------------------------------- */
+.filtros-busca {
+    margin-top: var(--espaco-md);
+    padding-top: var(--espaco-md);
+    border-top: 1px solid var(--cor-borda);
+}
+
+.filtro-titulo {
+    font-weight: 600;
+    margin-bottom: var(--espaco-sm);
+    display: block;
+    color: var(--cor-azul-escuro);
+}
+
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+@media (min-width: 768px) {
+    .checkbox-group { flex-direction: row; gap: var(--espaco-lg); }
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    padding-left: 36px;
+}
+
+.checkbox-label input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.custom-checkbox {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 24px;
+    width: 24px;
+    background-color: var(--cor-branco);
+    border: 2px solid #8e9cad;
+    border-radius: 4px;
+}
+
+.checkbox-label input:checked ~ .custom-checkbox {
+    background-color: var(--cor-azul-principal);
+    border-color: var(--cor-azul-principal);
+}
+
+.custom-checkbox:after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 7px;
+    top: 3px;
+    width: 6px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+
+.checkbox-label input:checked ~ .custom-checkbox:after {
+    display: block;
+}
+
+/* ----------------------------------------------------
+   Rodapé CNPq / Lattes Oficial
+------------------------------------------------------- */
+.rodape-institucional {
+    background-color: #002244;
+    color: var(--cor-branco);
+    padding: var(--espaco-xl) 0;
+}
+
+.rodape-institucional .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--espaco-xl);
+}
+
+.info-rodape img {
+    margin-bottom: var(--espaco-md);
+    height: 60px;
+}
+
+.links-rodape h2 {
+    color: var(--cor-branco);
+    font-size: 1.4rem;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    margin: 0 0 var(--espaco-md) 0;
+    padding-bottom: var(--espaco-sm);
+}
+
+.links-rodape ul { list-style: none; }
+.links-rodape a {
+    color: var(--cor-branco);
+    text-decoration: none;
+    display: flex;
+    padding: var(--espaco-sm) 0;
+}
+.links-rodape a:hover, .links-rodape a:focus {
+    padding-left: 8px;
+    color: #60a5fa;
+    text-decoration: underline;
+}
+
+/* ----------------------------------------------------
+   Design System Mobile Responsive
+------------------------------------------------------- */
+@media (max-width: 768px) {
+    .btn-menu-mobile {
+        display: inline-flex; /* Habilita no Mobile */
+    }
+
+    .lista-menu {
+        display: none; /* Escondido pr default até clicar no menu hamburguer */
+        flex-direction: column;
+        width: 100%;
+        background-color: var(--cor-branco);
+    }
+    
+    .lista-menu.ativo {
+        display: flex;
+    }
+
+    .lista-menu a {
+        width: 100%;
+        border-bottom: 1px solid var(--cor-borda);
+    }
+
+    .hero-section h1 { font-size: 2.2rem; }
+    h2 { font-size: 1.8rem; }
+    
+    .form-box, fieldset { padding: var(--espaco-md); }
+    .form-actions-inline, .btn-primary { width: 100%; }
+    .right-align { text-align: left; }
+}
